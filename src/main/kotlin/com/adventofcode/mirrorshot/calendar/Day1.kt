@@ -1,0 +1,23 @@
+package com.adventofcode.mirrorshot.calendar
+
+class Day1 {
+    fun problem1(input: ByteArray): Long {
+        return sortedCalories(input)
+            .first()
+            .also { e -> println(e) }
+            .second
+    }
+
+    fun problem2(input: ByteArray): Long {
+        return sortedCalories(input)
+            .take(3)
+            .also { e -> println(e) }
+            .sumOf { e -> e.second }
+    }
+
+    private fun sortedCalories(input: ByteArray) = input.decodeToString().split("\n\n")
+        .map { e -> Pair(e, e.split("\n")
+            .filter { s -> s.isNotBlank() }
+            .sumOf { c -> c.toLong() }) }
+        .sortedByDescending { e -> e.second }
+}
