@@ -1,14 +1,14 @@
 package com.adventofcode.mirrorshot.calendar
 
-class Day1 {
-    fun problem1(input: ByteArray): Long {
+class Day1: DaySolver() {
+    override fun problem1(input: ByteArray): Long {
         return sortedCalories(input)
             .first()
             .also { e -> println(e) }
             .second
     }
 
-    fun problem2(input: ByteArray): Long {
+    override fun problem2(input: ByteArray): Long {
         return sortedCalories(input)
             .take(3)
             .also { e -> println(e) }

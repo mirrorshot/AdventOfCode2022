@@ -1,7 +1,7 @@
 package com.adventofcode.mirrorshot.calendar
 
-class Day2 {
-    fun problem1(input: ByteArray): Long {
+class Day2 : DaySolver(){
+    override fun problem1(input: ByteArray): Long {
         return extractMatches(input)
             .map { e -> Pair(RPS.decode(e[0]), RPS.decode(e[2])) }
             .map { m -> Pair(m, score(m.first, m.second)) }
@@ -9,7 +9,7 @@ class Day2 {
             .sumOf { m -> m.second }
     }
 
-    fun problem2(input: ByteArray): Long {
+    override fun problem2(input: ByteArray): Long {
         return extractMatches(input)
             .map { e -> RPS.decode(e[0], e[2]) }
             .map { m -> Pair(m, score(m.first, m.second)) }
