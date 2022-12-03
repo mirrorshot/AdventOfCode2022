@@ -1,7 +1,6 @@
 package com.adventofcode.mirrorshot.calendar
 
 import org.junit.jupiter.api.Test
-
 import java.io.File
 import kotlin.test.assertEquals
 
@@ -20,7 +19,7 @@ class Day1Test {
 9000
 
 10000"""
-    val inputFile = File("C:\\Projects\\Personal\\AdventOfCode2022\\Input\\day1.txt")
+    val inputFile = File(ClassLoader.getSystemResource("day1.txt").file)
     val solver = Day1()
 
     @Test
