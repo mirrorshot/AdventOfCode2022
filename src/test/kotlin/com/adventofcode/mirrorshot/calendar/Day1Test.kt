@@ -5,7 +5,7 @@ import java.io.File
 import kotlin.test.assertEquals
 
 class Day1Test {
-    val input = """1000
+    private val input = """1000
 2000
 3000
 
@@ -19,8 +19,8 @@ class Day1Test {
 9000
 
 10000"""
-    val inputFile = File(ClassLoader.getSystemResource("day1.txt").file)
-    val solver = Day1()
+    private val inputFile = File(ClassLoader.getSystemResource("day1.txt").file)
+    private val solver = Day1()
 
     @Test
     fun problem1() {
