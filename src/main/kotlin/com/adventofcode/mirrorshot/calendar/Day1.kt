@@ -15,7 +15,7 @@ class Day1: DaySolver() {
             .sumOf { e -> e.second }
     }
 
-    private fun sortedCalories(input: ByteArray) = input.decodeToString().split("\n\n")
+    private fun sortedCalories(input: ByteArray) = parseInput(input).split("\n\n")
         .map { e -> Pair(e, e.split("\n")
             .filter { s -> s.isNotBlank() }
             .sumOf { c -> c.toLong() }) }
