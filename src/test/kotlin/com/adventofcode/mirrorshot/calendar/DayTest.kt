@@ -5,29 +5,27 @@ import org.junit.jupiter.api.Test
 import java.io.File
 import kotlin.test.assertEquals
 
-abstract class DayTest(
+abstract class DayTest<X, Y>(
     val input: String,
     inputFileName: String,
-    val solver: DaySolver,
-    val problem1Expected: Long,
-    val problem2Expected: Long,
-    val problem1FileExpected: Long,
-    val problem2FileExpected: Long
+    val solver: DaySolver<X, Y>,
+    val problem1Expected: X,
+    val problem2Expected: Y,
+    val problem1FileExpected: X,
+    val problem2FileExpected: Y
 ) {
     private val inputFile = File(ClassLoader.getSystemResource(inputFileName).file)
 
     @Test
     fun problem1() {
-        val byteArrayInput = input.toByteArray()
-        val result = solver.problem1(byteArrayInput)
+        val result = solver.problem1(input.toByteArray())
         assertEquals(problem1Expected, result)
     }
 
     @Ignore
     @Test
     fun problem2() {
-        val byteArrayInput = input.toByteArray()
-        val result = solver.problem2(byteArrayInput)
+        val result = solver.problem2(input.toByteArray())
         assertEquals(problem2Expected, result)
     }
 

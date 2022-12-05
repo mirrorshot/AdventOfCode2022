@@ -1,6 +1,6 @@
 package com.adventofcode.mirrorshot.calendar
 
-class Day3Test : DayTest(
+class Day3Test : DayTest<Long, Long>(
     input = """vJrwpWtwJgWrhcsFMMfFFhFp
 jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
 PmmdzqPrVvPwwTWBwg

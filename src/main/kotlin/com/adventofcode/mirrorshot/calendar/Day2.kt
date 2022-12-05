@@ -1,6 +1,6 @@
 package com.adventofcode.mirrorshot.calendar
 
-class Day2 : DaySolver(){
+class Day2 : DaySolver<Long, Long>(){
     override fun problem1(input: ByteArray): Long {
         return extractMatches(input)
             .map { e -> Pair(RPS.decode(e[0]), RPS.decode(e[2])) }

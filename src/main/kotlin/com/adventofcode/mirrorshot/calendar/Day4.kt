@@ -2,7 +2,7 @@ package com.adventofcode.mirrorshot.calendar
 
 import java.lang.Integer.min
 
-class Day4 : DaySolver() {
+class Day4 : DaySolver<Long, Long>() {
     override fun problem1(input: ByteArray): Long = countOverlappingRooms(input)
         .also { e -> println(e) }
         .count { e -> e.third == min(e.second.first.count(), e.second.second.count()) }

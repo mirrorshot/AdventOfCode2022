@@ -1,6 +1,6 @@
 package com.adventofcode.mirrorshot.calendar
 
-class Day2Test : DayTest(
+class Day2Test : DayTest<Long, Long>(
     input = """A Y
 B X
 C Z""",

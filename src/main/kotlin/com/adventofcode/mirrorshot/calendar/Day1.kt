@@ -1,6 +1,6 @@
 package com.adventofcode.mirrorshot.calendar
 
-class Day1: DaySolver() {
+class Day1: DaySolver<Long, Long>() {
     override fun problem1(input: ByteArray): Long {
         return sortedCalories(input)
             .first()
