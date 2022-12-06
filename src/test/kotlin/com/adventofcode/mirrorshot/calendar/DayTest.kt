@@ -6,27 +6,23 @@ import java.io.File
 import kotlin.test.assertEquals
 
 abstract class DayTest<X, Y>(
-    val input: String,
     inputFileName: String,
     val solver: DaySolver<X, Y>,
-    val problem1Expected: X,
-    val problem2Expected: Y,
     val problem1FileExpected: X,
-    val problem2FileExpected: Y
+    val problem2FileExpected: Y,
+    val examples: List<Triple<String, X, Y>>
 ) {
     private val inputFile = File(ClassLoader.getSystemResource(inputFileName).file)
 
     @Test
     fun problem1() {
-        val result = solver.problem1(input.toByteArray())
-        assertEquals(problem1Expected, result)
+        examples.forEach { e -> assertEquals(solver.problem1(e.first.toByteArray()), e.second) }
     }
 
     @Ignore
     @Test
     fun problem2() {
-        val result = solver.problem2(input.toByteArray())
-        assertEquals(problem2Expected, result)
+        examples.forEach { e -> assertEquals(solver.problem2(e.first.toByteArray()), e.third) }
     }
 
     @Test
