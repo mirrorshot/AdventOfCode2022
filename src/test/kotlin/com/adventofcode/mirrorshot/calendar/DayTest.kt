@@ -16,13 +16,13 @@ abstract class DayTest<X, Y>(
 
     @Test
     fun problem1() {
-        examples.forEach { e -> assertEquals(solver.problem1(e.first.toByteArray()), e.second) }
+        examples.forEach { e -> assertEquals(e.second, solver.problem1(e.first.toByteArray())) }
     }
 
     @Ignore
     @Test
     fun problem2() {
-        examples.forEach { e -> assertEquals(solver.problem2(e.first.toByteArray()), e.third) }
+        examples.forEach { e -> assertEquals(e.third, solver.problem2(e.first.toByteArray())) }
     }
 
     @Test
