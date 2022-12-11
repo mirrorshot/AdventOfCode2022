@@ -1,6 +1,5 @@
 package com.adventofcode.mirrorshot.calendar
 
-import org.junit.Ignore
 import org.junit.jupiter.api.Test
 import java.io.File
 import kotlin.test.assertEquals
@@ -19,7 +18,6 @@ abstract class DayTest<X, Y>(
         examples.forEach { e -> assertEquals(e.second, solver.problem1(e.first.toByteArray())) }
     }
 
-    @Ignore
     @Test
     fun problem2() {
         examples.forEach { e -> assertEquals(e.third, solver.problem2(e.first.toByteArray())) }
@@ -32,7 +30,6 @@ abstract class DayTest<X, Y>(
         assertEquals(problem1FileExpected, result)
     }
 
-    @Ignore
     @Test
     fun problem2Sol() {
         val result = solver.problem2(inputFile.readBytes())
