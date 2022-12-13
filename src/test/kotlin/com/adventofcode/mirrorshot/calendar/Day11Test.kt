@@ -4,7 +4,7 @@ class Day11Test : DayTest<Long, Long>(
     inputFileName = "day11.txt",
     solver = Day11(),
     problem1FileExpected = 78678L,
-    problem2FileExpected = 0L,
+    problem2FileExpected = 15333249714L,
     examples = listOf(
         Triple("""Monkey 0:
   Starting items: 79, 98
