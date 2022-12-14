@@ -5,12 +5,11 @@ import java.math.BigInteger
 class Day11 : DaySolver<Long, Long>() {
     override fun problem1(input: ByteArray): Long = Monkeys(parseInput(input))
         .also { monkeys ->
-            (1..20)
-                .onEach { r ->
+            repeat(20) { r ->
 //                    println("$monkeys")
-                    println("---------------------round $r")
-                    monkeys.round()
-                }
+                println("---------------------round $r")
+                monkeys.round()
+            }
         }
         .also { m -> println("$m") }
         .monkeys.toList()
@@ -21,12 +20,11 @@ class Day11 : DaySolver<Long, Long>() {
 
     override fun problem2(input: ByteArray): Long = Monkeys(parseInput(input))
         .also { monkeys ->
-            (1..10000)
-                .onEach { r ->
+            repeat(10000) { r ->
 //                    println("$monkeys")
-                    println("---------------------round $r")
-                    monkeys.round2()
-                }
+                println("---------------------round $r")
+                monkeys.round2()
+            }
         }
         .also { m -> println("$m") }
         .monkeys.toList()
@@ -75,12 +73,7 @@ class Day11 : DaySolver<Long, Long>() {
         fun project(): Pair<Int, BigInteger> =
             operation(items.removeAt(0))
                 .div(BigInteger.valueOf(3))
-                .let { item ->
-                    Pair(
-                        if (item.mod(test) == BigInteger.ZERO) monkeyTrue else monkeyFalse,
-                        item
-                    )
-                }
+                .let { item -> Pair(nextMonkey(item), item) }
                 .also { inspected++ }
 
         fun project2(limiter: BigInteger): Pair<Int, BigInteger> =
@@ -94,6 +87,9 @@ class Day11 : DaySolver<Long, Long>() {
                 }
                 .also { inspected++ }
 
+        fun nextMonkey(item: BigInteger): Int = if (item isDivisibleBy test) monkeyTrue else monkeyFalse
+
+        infix fun BigInteger.isDivisibleBy(divisor: BigInteger) = this.mod(test) == BigInteger.ZERO
         override fun toString(): String = "Monkey: $num - inspections $inspected - items: ${items.joinToString(", ")}"
 
         companion object {
@@ -106,14 +102,10 @@ class Day11 : DaySolver<Long, Long>() {
                 .split(" ")
                 .let { o ->
                     when {
-                        o[1] == "+" && o[2] == "old" -> { x: BigInteger -> x.plus(x) }
-                        o[1] == "+" -> { x: BigInteger -> x.plus(o[2].toBigInteger()) }
-                        o[1] == "-" && o[2] == "old" -> { x: BigInteger -> x.minus(x) }
-                        o[1] == "-" -> { x: BigInteger -> x.minus(o[2].toBigInteger()) }
-                        o[1] == "*" && o[2] == "old" -> { x: BigInteger -> x.times(x) }
-                        o[1] == "*" -> { x: BigInteger -> x.times(o[2].toBigInteger()) }
-                        o[1] == "/" && o[2] == "old" -> { x: BigInteger -> x.div(x) }
-                        o[1] == "/" -> { x: BigInteger -> x.div(o[2].toBigInteger()) }
+                        o[1] == "+" -> { x: BigInteger -> x.plus(o[2].toBigIntegerOrNull() ?: x) }
+                        o[1] == "-" -> { x: BigInteger -> x.minus(o[2].toBigIntegerOrNull() ?: x) }
+                        o[1] == "*" -> { x: BigInteger -> x.times(o[2].toBigIntegerOrNull() ?: x) }
+                        o[1] == "/" -> { x: BigInteger -> x.div(o[2].toBigIntegerOrNull() ?: x) }
                         else -> throw IllegalArgumentException("$o is not an operation")
                     }
                 }
