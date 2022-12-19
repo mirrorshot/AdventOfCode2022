@@ -1,6 +1,7 @@
 package com.adventofcode.mirrorshot.calendar
 
 class Day8 : DaySolver<Int, Int>() {
+
     override fun problem1(input: ByteArray): Int {
         val area = parseInput(input).split("\n")
             .filter { s -> s.isNotBlank() }
